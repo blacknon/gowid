@@ -131,6 +131,7 @@ type hotkey struct{}
 type Options struct {
 	Command                 []string
 	Env                     []string
+	Pty                     *os.File
 	HotKey                  IHotKeyProvider
 	HotKeyPersistence       IHotKeyPersistence // the period of time a hotKey sticks after the first post-hotKey keypress
 	Scrollback              int
@@ -534,7 +535,13 @@ func (w *Widget) TouchTerminal(width, height int, app gowid.IApp) {
 		w.SetCanvas(app, NewCanvasOfSize(width, height, w.params.Scrollback, w))
 	}
 	if !w.Connected() {
-		err := w.StartCommand(app, width, height) // TODO check for errors
+		var err error
+		if w.params.Pty != nil {
+			err = w.StartPtyConnect(app, width, height)
+		} else {
+			err = w.StartCommand(app, width, height) // TODO check for errors
+		}
+
 		if err != nil {
 			panic(StartCommandError{Command: w.params.Command, Err: err})
 		}
@@ -684,6 +691,108 @@ func (w *Widget) StartCommand(app gowid.IApp, width, height int) error {
 	}()
 
 	return nil
+}
+
+func (w *Widget) StartPtyConnect(app gowid.IApp, width, height int) error {
+	w.master = w.params.Pty
+	var err error
+
+	err = w.SetTerminalSize(width, height)
+	if err != nil {
+		log.WithFields(log.Fields{
+			"width":  width,
+			"height": height,
+			"error":  err,
+		}).Warn("Could not set terminal size")
+	}
+
+	master := w.master
+	canvas := w.canvas
+
+	canvas.AddCallback(Title{}, gowid.Callback{title{}, func(args ...interface{}) {
+		title := args[0].(string)
+		app.Run(&appRunExt{
+			fn: func(app gowid.IApp) bool {
+				w.SetTitle(title, app)
+				return false
+			},
+		})
+	}})
+
+	canvas.AddCallback(Bell{}, gowid.Callback{bell{}, func(args ...interface{}) {
+		app.Run(&appRunExt{
+			fn: func(app gowid.IApp) bool {
+				w.Bell(app)
+				return false
+			},
+		})
+	}})
+
+	canvas.AddCallback(LEDs{}, gowid.Callback{leds{}, func(args ...interface{}) {
+		mode := args[0].(LEDSState)
+		app.Run(&appRunExt{
+			fn: func(app gowid.IApp) bool {
+				w.SetLEDs(app, mode)
+				return false
+			},
+		})
+	}})
+
+	if w.params.EnableBracketedPaste {
+		app.Run(&appRunExt{
+			fn: func(app gowid.IApp) bool {
+				redraw := false
+				for _, b := range enablePaste(w.terminfo) {
+					if canvas.ProcessByteExt(b) {
+						redraw = true
+					}
+				}
+				return redraw
+			},
+		})
+	}
+
+	go func() {
+		for {
+			data := make([]byte, 4096)
+			n, err := master.Read(data)
+			if n == 0 && err == io.EOF {
+				// w.Cmd.Wait()
+				app.Run(&appRunExt{
+					fn: func(app gowid.IApp) bool {
+						gowid.RunWidgetCallbacks(w.Callbacks, ProcessExited{}, app, w)
+						return false
+					},
+				})
+
+				break
+			} else if err != nil {
+				// w.Cmd.Wait()
+				app.Run(&appRunExt{
+					fn: func(app gowid.IApp) bool {
+						gowid.RunWidgetCallbacks(w.Callbacks, ProcessExited{}, app, w)
+						return false
+					},
+				})
+				break
+			}
+
+			app.Run(&appRunExt{
+				fn: func(app gowid.IApp) bool {
+					render := false
+					for _, b := range data[0:n] {
+						if canvas.ProcessByteExt(b) {
+							render = true
+						}
+					}
+					return render
+				},
+			})
+		}
+	}()
+
+	return nil
+
 }
 
 type runFunctionExt func(gowid.IApp) bool

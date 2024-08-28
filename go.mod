@@ -13,7 +13,7 @@ require (
 	github.com/hashicorp/golang-lru v0.5.1
 	github.com/konsorten/go-windows-terminal-sequences v1.0.2 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0
-	github.com/mattn/go-runewidth v0.0.13
+	github.com/mattn/go-runewidth v0.0.16
 	github.com/pkg/errors v0.8.1
 	github.com/rakyll/statik v0.1.6
 	github.com/sirupsen/logrus v1.4.2

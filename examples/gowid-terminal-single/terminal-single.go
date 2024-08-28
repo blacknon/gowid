@@ -13,7 +13,6 @@ import (
 	"github.com/gcla/gowid"
 	"github.com/gcla/gowid/examples"
 	"github.com/gcla/gowid/widgets/columns"
-	"github.com/gcla/gowid/widgets/fill"
 	"github.com/gcla/gowid/widgets/framed"
 	"github.com/gcla/gowid/widgets/holder"
 	"github.com/gcla/gowid/widgets/pile"
@@ -113,7 +112,7 @@ func (f PileAdjuster) MakeBox(w gowid.IWidget, size gowid.IRenderSize, focus gow
 			box.R += f.widget.offset
 		case 2:
 			if box.R-f.widget.offset < 0 {
-				f.widget.offset = box.R
+				f.widget.offset = box.R + 3
 			}
 			box.R -= f.widget.offset
 		}
@@ -198,6 +197,135 @@ func (h handler) UnhandledInput(app gowid.IApp, ev interface{}) bool {
 
 //======================================================================
 
+// func main() {
+// 	var err error
+
+// 	f := examples.RedirectLogger("terminal.log")
+// 	defer f.Close()
+
+// 	palette := gowid.Palette{
+// 		"invred":  gowid.MakePaletteEntry(gowid.ColorBlack, gowid.ColorRed),
+// 		"invblue": gowid.MakePaletteEntry(gowid.ColorBlack, gowid.ColorCyan),
+// 		"line":    gowid.MakeStyledPaletteEntry(gowid.NewUrwidColor("black"), gowid.NewUrwidColor("light gray"), gowid.StyleBold),
+// 	}
+
+// 	hkDuration := terminal.HotKeyDuration{time.Second * 3}
+
+// 	twidgets = make([]*terminal.Widget, 0)
+// 	//foo := os.Env()
+// 	os.Open("foo")
+// 	tcommands := []string{
+// 		os.Getenv("SHELL"),
+// 		// os.Getenv("SHELL"),
+// 		// os.Getenv("SHELL"),
+// 		//"less cell.go",
+// 		//"vttest",
+// 		//"emacs -nw -q ./cell.go",
+// 	}
+
+// 	for _, cmd := range tcommands {
+// 		tapp, err := terminal.NewExt(terminal.Options{
+// 			Command:              strings.Split(cmd, " "),
+// 			HotKeyPersistence:    &hkDuration,
+// 			Scrollback:           100,
+// 			Scrollbar:            true,
+// 			EnableBracketedPaste: true,
+// 			HotKeyFns: []terminal.HotKeyInputFn{
+// 				func(ev *tcell.EventKey, w terminal.IWidget, app gowid.IApp) bool {
+// 					if w2, ok := w.(terminal.IScrollbar); ok {
+// 						if ev.Key() == tcell.KeyRune && ev.Rune() == 's' {
+// 							if w2.ScrollbarEnabled() {
+// 								w2.DisableScrollbar(app)
+// 							} else {
+// 								w2.EnableScrollbar(app)
+// 							}
+// 							return true
+// 						}
+// 					}
+// 					return false
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			panic(err)
+// 		}
+// 		twidgets = append(twidgets, tapp)
+// 	}
+
+// 	tw := text.New(" Terminal Demo ")
+// 	twir := styled.New(tw, gowid.MakePaletteRef("invred"))
+// 	twib := styled.New(tw, gowid.MakePaletteRef("invblue"))
+// 	twp := holder.New(tw)
+
+// 	// 枠のライン
+// 	vline := styled.New(fill.New('│'), gowid.MakePaletteRef("line"))
+// 	hline := styled.New(fill.New('⎯'), gowid.MakePaletteRef("line"))
+
+// 	//
+// 	pilew = NewResizeablePile([]gowid.IContainerWidget{
+// 		&gowid.ContainerWidget{twidgets[1], gowid.RenderWithWeight{1}},
+// 		&gowid.ContainerWidget{hline, gowid.RenderWithUnits{U: 1}},
+// 		&gowid.ContainerWidget{twidgets[2], gowid.RenderWithWeight{1}},
+// 	})
+
+// 	cols = NewResizeableColumns([]gowid.IContainerWidget{
+// 		&gowid.ContainerWidget{twidgets[0], gowid.RenderWithWeight{3}},
+// 		&gowid.ContainerWidget{vline, gowid.RenderWithUnits{U: 1}},
+// 		&gowid.ContainerWidget{pilew, gowid.RenderWithWeight{1}},
+// 	})
+
+// 	view := framed.New(cols, framed.Options{
+// 		Frame:       framed.UnicodeFrame,
+// 		TitleWidget: twp,
+// 	})
+
+// 	for _, t := range twidgets {
+// 		t.OnProcessExited(gowid.WidgetCallback{"cb",
+// 			func(app gowid.IApp, w gowid.IWidget) {
+// 				app.Quit()
+// 			},
+// 		})
+// 		t.OnBell(gowid.WidgetCallback{"cb",
+// 			func(app gowid.IApp, w gowid.IWidget) {
+// 				twp.SetSubWidget(twir, app)
+// 				timer := time.NewTimer(time.Millisecond * 800)
+// 				go func() {
+// 					<-timer.C
+// 					app.Run(gowid.RunFunction(func(app gowid.IApp) {
+// 						twp.SetSubWidget(tw, app)
+// 					}))
+// 				}()
+// 			},
+// 		})
+// 		t.OnSetTitle(gowid.WidgetCallback{"cb",
+// 			func(app gowid.IApp, w gowid.IWidget) {
+// 				w2 := w.(*terminal.Widget)
+// 				tw.SetText(" "+w2.GetTitle()+" ", app)
+// 			},
+// 		})
+// 		t.OnHotKey(gowid.WidgetCallback{"cb",
+// 			func(app gowid.IApp, w gowid.IWidget) {
+// 				w2 := w.(*terminal.Widget)
+// 				if w2.HotKeyActive() {
+// 					twp.SetSubWidget(twib, app)
+// 				} else {
+// 					twp.SetSubWidget(tw, app)
+// 				}
+// 			},
+// 		})
+// 	}
+
+// 	app, err = gowid.NewApp(gowid.AppArgs{
+// 		View:                 view,
+// 		Palette:              &palette,
+// 		Log:                  log.StandardLogger(),
+// 		EnableBracketedPaste: true,
+// 	})
+// 	examples.ExitOnErr(err)
+
+// 	app.MainLoop(handler{})
+// }
+
 func main() {
 	runewidth.DefaultCondition.EastAsianWidth = false
 
@@ -215,17 +343,13 @@ func main() {
 	hkDuration := terminal.HotKeyDuration{time.Second * 3}
 
 	twidgets = make([]*terminal.Widget, 0)
-	//foo := os.Env()
-	os.Open("foo")
+
+	// tcommandsに1つだけのコマンドを設定
 	tcommands := []string{
-		os.Getenv("SHELL"),
-		os.Getenv("SHELL"),
-		os.Getenv("SHELL"),
-		//"less cell.go",
-		//"vttest",
-		//"emacs -nw -q ./cell.go",
+		os.Getenv("SHELL"), // ここでは1つのシェルのみ
 	}
 
+	// 1つのターミナルウィジェットを作成
 	for _, cmd := range tcommands {
 		tapp, err := terminal.NewExt(terminal.Options{
 			Command:              strings.Split(cmd, " "),
@@ -260,22 +384,8 @@ func main() {
 	twib := styled.New(tw, gowid.MakePaletteRef("invblue"))
 	twp := holder.New(tw)
 
-	vline := styled.New(fill.New('│'), gowid.MakePaletteRef("line"))
-	hline := styled.New(fill.New('⎯'), gowid.MakePaletteRef("line"))
-
-	pilew = NewResizeablePile([]gowid.IContainerWidget{
-		&gowid.ContainerWidget{twidgets[1], gowid.RenderWithWeight{1}},
-		&gowid.ContainerWidget{hline, gowid.RenderWithUnits{U: 1}},
-		&gowid.ContainerWidget{twidgets[2], gowid.RenderWithWeight{1}},
-	})
-
-	cols = NewResizeableColumns([]gowid.IContainerWidget{
-		&gowid.ContainerWidget{twidgets[0], gowid.RenderWithWeight{3}},
-		&gowid.ContainerWidget{vline, gowid.RenderWithUnits{U: 1}},
-		&gowid.ContainerWidget{pilew, gowid.RenderWithWeight{1}},
-	})
-
-	view := framed.New(cols, framed.Options{
+	// 枠のラインを削除し、1つのターミナルを配置
+	view := framed.New(twidgets[0], framed.Options{
 		Frame:       framed.UnicodeFrame,
 		TitleWidget: twp,
 	})

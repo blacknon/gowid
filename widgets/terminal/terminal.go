@@ -495,6 +495,7 @@ func (w *Widget) SetTerminalSize(width, height int) error {
 		Row: uint16(height),
 		Col: uint16(width),
 	}
+
 	_, _, errno := syscall.Syscall(syscall.SYS_IOCTL,
 		w.master.Fd(),
 		syscall.TIOCSWINSZ,
@@ -565,7 +566,6 @@ func (w *Widget) TouchTerminal(width, height int, app gowid.IApp) {
 		w.curWidth = width
 		w.curHeight = height
 	}
-
 }
 
 func (w *Widget) Signal(sig syscall.Signal) error {

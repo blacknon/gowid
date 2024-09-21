@@ -199,7 +199,6 @@ func (h handler) UnhandledInput(app gowid.IApp, ev interface{}) bool {
 //======================================================================
 
 func main() {
-
 	runewidth.DefaultCondition.EastAsianWidth = false
 
 	var err error

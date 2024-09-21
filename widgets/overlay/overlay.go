@@ -8,8 +8,8 @@ package overlay
 import (
 	"fmt"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/widgets/padding"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/widgets/padding"
 	tcell "github.com/gdamore/tcell/v2"
 )
 

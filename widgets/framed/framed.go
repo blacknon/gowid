@@ -9,9 +9,9 @@ import (
 	"fmt"
 	"runtime"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/gwutil"
-	"github.com/gcla/gowid/widgets/text"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/gwutil"
+	"github.com/blacknon/gowid/widgets/text"
 	tcell "github.com/gdamore/tcell/v2"
 	"github.com/mattn/go-runewidth"
 )

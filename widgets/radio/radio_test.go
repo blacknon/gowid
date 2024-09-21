@@ -6,9 +6,9 @@ package radio
 import (
 	"testing"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/gwtest"
-	"github.com/gcla/gowid/widgets/columns"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/gwtest"
+	"github.com/blacknon/gowid/widgets/columns"
 	"github.com/stretchr/testify/assert"
 )
 

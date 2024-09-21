@@ -7,12 +7,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/gwtest"
-	"github.com/gcla/gowid/widgets/button"
-	"github.com/gcla/gowid/widgets/fill"
-	"github.com/gcla/gowid/widgets/framed"
-	"github.com/gcla/gowid/widgets/text"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/gwtest"
+	"github.com/blacknon/gowid/widgets/button"
+	"github.com/blacknon/gowid/widgets/fill"
+	"github.com/blacknon/gowid/widgets/framed"
+	"github.com/blacknon/gowid/widgets/text"
 	tcell "github.com/gdamore/tcell/v2"
 	"github.com/stretchr/testify/assert"
 )

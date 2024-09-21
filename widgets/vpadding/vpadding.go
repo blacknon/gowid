@@ -9,8 +9,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/widgets/fill"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/widgets/fill"
 	tcell "github.com/gdamore/tcell/v2"
 )
 

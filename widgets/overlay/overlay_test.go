@@ -7,10 +7,10 @@ package overlay
 import (
 	"testing"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/gwtest"
-	"github.com/gcla/gowid/widgets/styled"
-	"github.com/gcla/gowid/widgets/text"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/gwtest"
+	"github.com/blacknon/gowid/widgets/styled"
+	"github.com/blacknon/gowid/widgets/text"
 	"github.com/gdamore/tcell/v2"
 	"github.com/stretchr/testify/assert"
 )

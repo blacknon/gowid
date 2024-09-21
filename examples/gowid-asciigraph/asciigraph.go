@@ -6,9 +6,9 @@
 package main
 
 import (
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/examples"
-	"github.com/gcla/gowid/widgets/asciigraph"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/examples"
+	"github.com/blacknon/gowid/widgets/asciigraph"
 	asc "github.com/guptarohit/asciigraph"
 	log "github.com/sirupsen/logrus"
 )

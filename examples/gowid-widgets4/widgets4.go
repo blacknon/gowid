@@ -7,15 +7,15 @@ package main
 import (
 	"fmt"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/examples"
-	"github.com/gcla/gowid/widgets/columns"
-	"github.com/gcla/gowid/widgets/framed"
-	"github.com/gcla/gowid/widgets/list"
-	"github.com/gcla/gowid/widgets/palettemap"
-	"github.com/gcla/gowid/widgets/selectable"
-	"github.com/gcla/gowid/widgets/text"
-	"github.com/gcla/gowid/widgets/vpadding"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/examples"
+	"github.com/blacknon/gowid/widgets/columns"
+	"github.com/blacknon/gowid/widgets/framed"
+	"github.com/blacknon/gowid/widgets/list"
+	"github.com/blacknon/gowid/widgets/palettemap"
+	"github.com/blacknon/gowid/widgets/selectable"
+	"github.com/blacknon/gowid/widgets/text"
+	"github.com/blacknon/gowid/widgets/vpadding"
 	log "github.com/sirupsen/logrus"
 )
 

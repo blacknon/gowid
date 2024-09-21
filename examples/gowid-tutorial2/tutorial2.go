@@ -7,9 +7,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/examples"
-	"github.com/gcla/gowid/widgets/text"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/examples"
+	"github.com/blacknon/gowid/widgets/text"
 	tcell "github.com/gdamore/tcell/v2"
 )
 

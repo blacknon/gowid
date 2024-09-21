@@ -5,11 +5,11 @@
 package main
 
 import (
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/examples"
-	"github.com/gcla/gowid/widgets/styled"
-	"github.com/gcla/gowid/widgets/text"
-	"github.com/gcla/gowid/widgets/vpadding"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/examples"
+	"github.com/blacknon/gowid/widgets/styled"
+	"github.com/blacknon/gowid/widgets/text"
+	"github.com/blacknon/gowid/widgets/vpadding"
 )
 
 //======================================================================

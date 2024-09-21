@@ -8,7 +8,7 @@ package shadow
 import (
 	"fmt"
 
-	"github.com/gcla/gowid"
+	"github.com/blacknon/gowid"
 	tcell "github.com/gdamore/tcell/v2"
 )
 

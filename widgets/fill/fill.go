@@ -8,7 +8,7 @@ package fill
 import (
 	"fmt"
 
-	"github.com/gcla/gowid"
+	"github.com/blacknon/gowid"
 )
 
 //======================================================================

@@ -9,7 +9,7 @@ import (
 	"regexp"
 	"strconv"
 
-	"github.com/gcla/gowid/gwutil"
+	"github.com/blacknon/gowid/gwutil"
 	tcell "github.com/gdamore/tcell/v2"
 	lru "github.com/hashicorp/golang-lru"
 	"github.com/lucasb-eyer/go-colorful"

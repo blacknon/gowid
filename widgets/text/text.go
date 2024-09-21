@@ -11,8 +11,8 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/gwutil"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/gwutil"
 	"github.com/mattn/go-runewidth"
 )
 

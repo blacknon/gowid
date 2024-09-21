@@ -9,9 +9,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/gwutil"
-	"github.com/gcla/gowid/widgets/list"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/gwutil"
+	"github.com/blacknon/gowid/widgets/list"
 	lru "github.com/hashicorp/golang-lru"
 )
 

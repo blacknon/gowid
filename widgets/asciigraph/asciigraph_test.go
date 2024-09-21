@@ -7,8 +7,8 @@ package asciigraph
 import (
 	"testing"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/gwtest"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/gwtest"
 	asc "github.com/guptarohit/asciigraph"
 	"github.com/stretchr/testify/assert"
 )

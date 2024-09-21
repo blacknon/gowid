@@ -14,18 +14,18 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/gcla/gowid/examples"
-	_ "github.com/gcla/gowid/examples/gowid-table/statik"
+	"github.com/blacknon/gowid/examples"
+	_ "github.com/blacknon/gowid/examples/gowid-table/statik"
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 
 	tcell "github.com/gdamore/tcell/v2"
 	"github.com/rakyll/statik/fs"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/widgets/divider"
-	"github.com/gcla/gowid/widgets/fill"
-	"github.com/gcla/gowid/widgets/table"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/widgets/divider"
+	"github.com/blacknon/gowid/widgets/fill"
+	"github.com/blacknon/gowid/widgets/table"
 )
 
 //======================================================================

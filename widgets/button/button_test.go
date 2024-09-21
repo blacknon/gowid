@@ -8,9 +8,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/gwtest"
-	"github.com/gcla/gowid/widgets/text"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/gwtest"
+	"github.com/blacknon/gowid/widgets/text"
 	"github.com/gdamore/tcell/v2"
 	log "github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"

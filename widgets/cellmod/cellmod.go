@@ -6,7 +6,7 @@
 package cellmod
 
 import (
-	"github.com/gcla/gowid"
+	"github.com/blacknon/gowid"
 )
 
 //======================================================================

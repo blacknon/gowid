@@ -7,9 +7,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/gwtest"
-	"github.com/gcla/gowid/widgets/text"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/gwtest"
+	"github.com/blacknon/gowid/widgets/text"
 	log "github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 )

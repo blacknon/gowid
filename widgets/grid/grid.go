@@ -10,14 +10,14 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/gwutil"
-	"github.com/gcla/gowid/vim"
-	"github.com/gcla/gowid/widgets/columns"
-	"github.com/gcla/gowid/widgets/hpadding"
-	"github.com/gcla/gowid/widgets/pile"
-	"github.com/gcla/gowid/widgets/text"
-	"github.com/gcla/gowid/widgets/vpadding"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/gwutil"
+	"github.com/blacknon/gowid/vim"
+	"github.com/blacknon/gowid/widgets/columns"
+	"github.com/blacknon/gowid/widgets/hpadding"
+	"github.com/blacknon/gowid/widgets/pile"
+	"github.com/blacknon/gowid/widgets/text"
+	"github.com/blacknon/gowid/widgets/vpadding"
 	tcell "github.com/gdamore/tcell/v2"
 )
 

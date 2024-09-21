@@ -6,9 +6,9 @@ package fixedadapter
 import (
 	"testing"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/gwtest"
-	"github.com/gcla/gowid/widgets/checkbox"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/gwtest"
+	"github.com/blacknon/gowid/widgets/checkbox"
 	"github.com/stretchr/testify/assert"
 )
 

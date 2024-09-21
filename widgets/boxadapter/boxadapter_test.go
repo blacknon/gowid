@@ -8,10 +8,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/gwtest"
-	"github.com/gcla/gowid/widgets/edit"
-	"github.com/gcla/gowid/widgets/list"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/gwtest"
+	"github.com/blacknon/gowid/widgets/edit"
+	"github.com/blacknon/gowid/widgets/list"
 	tcell "github.com/gdamore/tcell/v2"
 	"github.com/stretchr/testify/assert"
 )

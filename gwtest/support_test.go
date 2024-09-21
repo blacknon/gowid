@@ -6,11 +6,11 @@ package gwtest
 import (
 	"testing"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/widgets/columns"
-	"github.com/gcla/gowid/widgets/edit"
-	"github.com/gcla/gowid/widgets/pile"
-	"github.com/gcla/gowid/widgets/styled"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/widgets/columns"
+	"github.com/blacknon/gowid/widgets/edit"
+	"github.com/blacknon/gowid/widgets/pile"
+	"github.com/blacknon/gowid/widgets/styled"
 	"github.com/stretchr/testify/assert"
 )
 

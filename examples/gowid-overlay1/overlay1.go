@@ -5,12 +5,12 @@
 package main
 
 import (
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/examples"
-	"github.com/gcla/gowid/gwutil"
-	"github.com/gcla/gowid/widgets/fill"
-	"github.com/gcla/gowid/widgets/overlay"
-	"github.com/gcla/gowid/widgets/styled"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/examples"
+	"github.com/blacknon/gowid/gwutil"
+	"github.com/blacknon/gowid/widgets/fill"
+	"github.com/blacknon/gowid/widgets/overlay"
+	"github.com/blacknon/gowid/widgets/styled"
 	tcell "github.com/gdamore/tcell/v2"
 	log "github.com/sirupsen/logrus"
 )

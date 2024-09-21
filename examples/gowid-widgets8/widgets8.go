@@ -5,11 +5,11 @@
 package main
 
 import (
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/examples"
-	"github.com/gcla/gowid/widgets/checkbox"
-	"github.com/gcla/gowid/widgets/columns"
-	"github.com/gcla/gowid/widgets/hpadding"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/examples"
+	"github.com/blacknon/gowid/widgets/checkbox"
+	"github.com/blacknon/gowid/widgets/columns"
+	"github.com/blacknon/gowid/widgets/hpadding"
 	log "github.com/sirupsen/logrus"
 )
 

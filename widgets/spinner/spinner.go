@@ -10,9 +10,9 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/widgets/styled"
-	"github.com/gcla/gowid/widgets/text"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/widgets/styled"
+	"github.com/blacknon/gowid/widgets/text"
 )
 
 //======================================================================

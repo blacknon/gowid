@@ -8,10 +8,10 @@ package menu
 import (
 	"fmt"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/widgets/holder"
-	"github.com/gcla/gowid/widgets/null"
-	"github.com/gcla/gowid/widgets/overlay"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/widgets/holder"
+	"github.com/blacknon/gowid/widgets/null"
+	"github.com/blacknon/gowid/widgets/overlay"
 	tcell "github.com/gdamore/tcell/v2"
 )
 

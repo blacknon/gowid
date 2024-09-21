@@ -10,8 +10,8 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/gwtest"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/gwtest"
 	tcell "github.com/gdamore/tcell/v2"
 	"github.com/stretchr/testify/assert"
 )

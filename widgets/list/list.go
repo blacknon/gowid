@@ -8,9 +8,9 @@ package list
 import (
 	"fmt"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/gwutil"
-	"github.com/gcla/gowid/vim"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/gwutil"
+	"github.com/blacknon/gowid/vim"
 	tcell "github.com/gdamore/tcell/v2"
 	"github.com/pkg/errors"
 )

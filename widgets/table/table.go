@@ -10,12 +10,12 @@ import (
 	"strconv"
 
 	"github.com/araddon/dateparse"
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/gwutil"
-	"github.com/gcla/gowid/widgets/columns"
-	"github.com/gcla/gowid/widgets/isselected"
-	"github.com/gcla/gowid/widgets/list"
-	"github.com/gcla/gowid/widgets/pile"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/gwutil"
+	"github.com/blacknon/gowid/widgets/columns"
+	"github.com/blacknon/gowid/widgets/isselected"
+	"github.com/blacknon/gowid/widgets/list"
+	"github.com/blacknon/gowid/widgets/pile"
 	tcell "github.com/gdamore/tcell/v2"
 	lru "github.com/hashicorp/golang-lru"
 )

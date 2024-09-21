@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/gwutil"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/gwutil"
 	tcell "github.com/gdamore/tcell/v2"
 )
 

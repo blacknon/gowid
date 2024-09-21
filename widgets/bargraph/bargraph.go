@@ -6,11 +6,11 @@
 package bargraph
 
 import (
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/widgets/columns"
-	"github.com/gcla/gowid/widgets/fill"
-	"github.com/gcla/gowid/widgets/overlay"
-	"github.com/gcla/gowid/widgets/pile"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/widgets/columns"
+	"github.com/blacknon/gowid/widgets/fill"
+	"github.com/blacknon/gowid/widgets/overlay"
+	"github.com/blacknon/gowid/widgets/pile"
 )
 
 //======================================================================

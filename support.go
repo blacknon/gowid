@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gcla/gowid/gwutil"
+	"github.com/blacknon/gowid/gwutil"
 	tcell "github.com/gdamore/tcell/v2"
 	"github.com/pkg/errors"
 )

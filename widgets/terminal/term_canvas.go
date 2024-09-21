@@ -15,8 +15,8 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/gwutil"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/gwutil"
 	tcell "github.com/gdamore/tcell/v2"
 	"github.com/mattn/go-runewidth"
 	log "github.com/sirupsen/logrus"

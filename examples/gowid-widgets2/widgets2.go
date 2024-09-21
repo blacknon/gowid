@@ -5,15 +5,15 @@
 package main
 
 import (
-	"github.com/gcla/gowid"
-	"github.com/gcla/gowid/examples"
-	"github.com/gcla/gowid/widgets/checkbox"
-	"github.com/gcla/gowid/widgets/columns"
-	"github.com/gcla/gowid/widgets/edit"
-	"github.com/gcla/gowid/widgets/fill"
-	"github.com/gcla/gowid/widgets/selectable"
-	"github.com/gcla/gowid/widgets/styled"
-	"github.com/gcla/gowid/widgets/text"
+	"github.com/blacknon/gowid"
+	"github.com/blacknon/gowid/examples"
+	"github.com/blacknon/gowid/widgets/checkbox"
+	"github.com/blacknon/gowid/widgets/columns"
+	"github.com/blacknon/gowid/widgets/edit"
+	"github.com/blacknon/gowid/widgets/fill"
+	"github.com/blacknon/gowid/widgets/selectable"
+	"github.com/blacknon/gowid/widgets/styled"
+	"github.com/blacknon/gowid/widgets/text"
 	log "github.com/sirupsen/logrus"
 )
 

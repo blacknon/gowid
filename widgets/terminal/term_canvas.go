@@ -1376,7 +1376,7 @@ func (c *Canvas) ParseEscapeExt(r byte) bool {
 		if _, ok := csiMap[r]; ok {
 			res = c.ParseCSIExt(r)
 			c.parsestate = defaultState
-		} else if ((r == '-') || (r == '0') || (r == '1') || (r == '2') || (r == '3') || (r == '4') || (r == '5') || (r == '6') || (r == '7') || (r == '8') || (r == '9') || (r == ';')) || (len(c.escbuf) == 0 && r == '?') {
+		} else if ((r == '-') || (r == '0') || (r == '1') || (r == '2') || (r == '3') || (r == '4') || (r == '5') || (r == '6') || (r == '7') || (r == '8') || (r == '9') || (r == ';')) || (len(c.escbuf) == 0 && (r == '?' || r == '>')) {
 			c.escbuf = append(c.escbuf, r)
 			leaveEscape = false
 		}

@@ -11,7 +11,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"os"
 	"strconv"
 	"strings"
 	"unicode/utf8"
@@ -1140,13 +1139,11 @@ func (c *Canvas) CSIEraseLine(mode int) {
 	if myx > 1 {
 		cursorx = cursorx - 1
 	}
-
 	cellbg := c.CellAt(cursorx, cursory).BackgroundColor()
 	cell := gowid.Cell{}.WithBackgroundColor(cellbg)
 
 	switch mode {
 	case 0:
-		fmt.Fprintln(os.Stderr, "catch \\e[0K", cellbg.String())
 		c.Erase(myx, myy, c.BoxColumns()-1, myy, cell)
 	case 1:
 		c.Erase(0, myy, myx, myy, cell)

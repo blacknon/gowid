@@ -199,7 +199,7 @@ var csiMap = CSIMap{
 	}},
 	'X': RegularCSICommand{1, 1, func(canvas *Canvas, args []int, qmark bool) bool {
 		myx, myy := canvas.TermCursor()
-		canvas.Erase(myx, myy, myx+args[0]-1, myy, gowid.Cell{})
+		canvas.Erase(myx, myy, myx+args[0]-1, myy)
 		return true
 	}},
 	'a': AliasCSICommand{alias: 'C'},
@@ -1104,9 +1104,11 @@ func (c *Canvas) RemoveLines(atCursor bool, lines int) {
 	}
 }
 
-func (c *Canvas) Erase(startx, starty, endx, endy int, cell gowid.Cell) {
+func (c *Canvas) Erase(startx, starty, endx, endy int) {
 	sx, sy := c.ConstrainCoords(startx, starty, false)
 	ex, ey := c.ConstrainCoords(endx, endy, false)
+
+	cell := c.MakeCellFrom(' ').WithNoRune()
 
 	if sy == ey {
 		for i := sx; i < ex+1; i++ {
@@ -1135,19 +1137,18 @@ func (c *Canvas) Erase(startx, starty, endx, endy int, cell gowid.Cell) {
 
 func (c *Canvas) CSIEraseLine(mode int) {
 	myx, myy := c.TermCursor()
-	cursorx, cursory := myx, myy
-	if myx > 1 {
-		cursorx = cursorx - 1
-	}
-	cellbg := c.CellAt(cursorx, cursory).BackgroundColor()
-	cell := gowid.Cell{}.WithBackgroundColor(cellbg)
+	// cursorx, cursory := myx, myy
+	// if myx > 1 {
+	// 	cursorx = cursorx - 1
+	// }
 
 	switch mode {
 	case 0:
-		c.Erase(myx, myy, c.BoxColumns()-1, myy, cell)
+		c.Erase(myx, myy, c.BoxColumns()-1, myy)
 	case 1:
-		c.Erase(0, myy, myx, myy, cell)
+		c.Erase(0, myy, myx, myy)
 	case 2:
+		cell := c.MakeCellFrom(' ').WithNoRune()
 		for i := 0; i < c.BoxColumns(); i++ {
 			c.SetCellAt(i, myy, cell)
 		}
@@ -1158,9 +1159,9 @@ func (c *Canvas) CSIEraseDisplay(mode int) {
 	myx, myy := c.TermCursor()
 	switch mode {
 	case 0:
-		c.Erase(myx, myy, c.BoxColumns()-1, c.BoxRows()-1, gowid.Cell{})
+		c.Erase(myx, myy, c.BoxColumns()-1, c.BoxRows()-1)
 	case 1:
-		c.Erase(0, 0, myx, myy, gowid.Cell{})
+		c.Erase(0, 0, myx, myy)
 	case 2:
 		c.Clear(gwutil.SomeInt(myx), gwutil.SomeInt(myy))
 	}

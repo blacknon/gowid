@@ -199,7 +199,7 @@ var csiMap = CSIMap{
 	}},
 	'X': RegularCSICommand{1, 1, func(canvas *Canvas, args []int, qmark bool) bool {
 		myx, myy := canvas.TermCursor()
-		canvas.Erase(myx, myy, myx+args[0]-1, myy)
+		canvas.Erase(myx, myy, myx+args[0]-1, myy, gowid.Cell{})
 		return true
 	}},
 	'a': AliasCSICommand{alias: 'C'},
@@ -1104,28 +1104,28 @@ func (c *Canvas) RemoveLines(atCursor bool, lines int) {
 	}
 }
 
-func (c *Canvas) Erase(startx, starty, endx, endy int) {
+func (c *Canvas) Erase(startx, starty, endx, endy int, cell gowid.Cell) {
 	sx, sy := c.ConstrainCoords(startx, starty, false)
 	ex, ey := c.ConstrainCoords(endx, endy, false)
 
 	if sy == ey {
 		for i := sx; i < ex+1; i++ {
-			c.SetCellAt(i, sy, gowid.Cell{})
+			c.SetCellAt(i, sy, cell)
 		}
 	} else {
 		y := sy
 		for y <= ey {
 			if y == sy {
 				for i := sx; i < c.BoxColumns(); i++ {
-					c.SetCellAt(i, y, gowid.Cell{})
+					c.SetCellAt(i, y, cell)
 				}
 			} else if y == ey {
 				for i := 0; i < ex+1; i++ {
-					c.SetCellAt(i, y, gowid.Cell{})
+					c.SetCellAt(i, y, cell)
 				}
 			} else {
 				for i := 0; i < c.BoxColumns(); i++ {
-					c.SetCellAt(i, y, gowid.Cell{})
+					c.SetCellAt(i, y, cell)
 				}
 			}
 			y++
@@ -1135,15 +1135,22 @@ func (c *Canvas) Erase(startx, starty, endx, endy int) {
 
 func (c *Canvas) CSIEraseLine(mode int) {
 	myx, myy := c.TermCursor()
-	switch mode {
+	cursorx, cursory := myx, myy
+	if myx > 1 {
+		cursorx = cursorx - 1
+	}
 
+	cellbg := c.CellAt(cursorx, cursory).BackgroundColor()
+	cell := gowid.Cell{}.WithBackgroundColor(cellbg)
+
+	switch mode {
 	case 0:
-		c.Erase(myx, myy, c.BoxColumns()-1, myy)
+		c.Erase(myx, myy, c.BoxColumns()-1, myy, cell)
 	case 1:
-		c.Erase(0, myy, myx, myy)
+		c.Erase(0, myy, myx, myy, cell)
 	case 2:
 		for i := 0; i < c.BoxColumns(); i++ {
-			c.SetCellAt(i, myy, gowid.Cell{})
+			c.SetCellAt(i, myy, cell)
 		}
 	}
 }
@@ -1152,9 +1159,9 @@ func (c *Canvas) CSIEraseDisplay(mode int) {
 	myx, myy := c.TermCursor()
 	switch mode {
 	case 0:
-		c.Erase(myx, myy, c.BoxColumns()-1, c.BoxRows()-1)
+		c.Erase(myx, myy, c.BoxColumns()-1, c.BoxRows()-1, gowid.Cell{})
 	case 1:
-		c.Erase(0, 0, myx, myy)
+		c.Erase(0, 0, myx, myy, gowid.Cell{})
 	case 2:
 		c.Clear(gwutil.SomeInt(myx), gwutil.SomeInt(myy))
 	}
